@@ -28,7 +28,7 @@ local function safe_region(callback, nodes_needed)
 
 		--save callback to call later
 		safe_region_callback[name], safe_region_param[name] = callback, param
-		worldedit.player_notify(name, "WARNING: this operation could affect up to " .. count .. " nodes; type //y to continue or //n to cancel")
+		worldedit.player_notify(name, "WARNING: this operation could affect up to " .. count .. " nodes and might not be undoable; type //y to continue or //n to cancel")
 	end
 end
 

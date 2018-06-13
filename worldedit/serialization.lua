@@ -51,7 +51,7 @@ end
 -- into a single string.
 -- @return The serialized data.
 -- @return The number of nodes serialized.
-function worldedit.serialize(pos1, pos2)
+function worldedit.serialize(pos1, pos2, save_air)
 	pos1, pos2 = worldedit.sort_pos(pos1, pos2)
 
 	worldedit.keep_loaded(pos1, pos2)
@@ -66,7 +66,7 @@ function worldedit.serialize(pos1, pos2)
 			pos.z = pos1.z
 			while pos.z <= pos2.z do
 				local node = get_node(pos)
-				if node.name ~= "air" and node.name ~= "ignore" then
+				if (node.name ~= "air" or save_air) and node.name ~= "ignore" then
 					count = count + 1
 					local meta = get_meta(pos):to_table()
 
